@@ -1,0 +1,585 @@
+:root {
+  --color-neutral-50: #fafafa;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-600: #525252;
+  --color-neutral-900: #171717;
+  --color-red-300: #fca5a5;
+  --color-red-500: #ef4444;
+  --color-yellow-500: #eab308;
+  --color-green-300: #86efac;
+  --color-green-500: #22c55e;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 62.5%;
+  color: var(--color-neutral-600);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+/* Container */
+
+#container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+}
+
+/* Header */
+
+.header {
+  grid-area: header;
+  background-color: var(--color-neutral-600);
+  display: flex;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.header-logo {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--color-neutral-50);
+}
+
+/* Aside */
+
+.aside {
+  grid-area: aside;
+  background-color: var(--color-neutral-300);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 3rem;
+  font-size: 1.8rem;
+}
+
+.aside-logo {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: currentColor;
+}
+
+.aside-due-dates {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-due-dates > div {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  border-radius: 0.4rem;
+}
+
+.aside-due-dates > div:hover {
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.aside-projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-projects-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  padding: 1.5rem;
+}
+
+.aside-projects-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-project {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.aside-project:hover {
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-900);
+}
+
+.aside-project-logo,
+.aside-project-remove-logo {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+}
+
+.aside-project-remove-logo {
+  opacity: 0;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.aside-project:hover .aside-project-remove-logo {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.aside-project-remove-logo:hover {
+  border: 0.2rem solid currentColor;
+}
+
+.aside-projects-add-prj-btn {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+}
+
+.aside-projects-add-prj-btn:hover {
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.aside-projects-create {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.aside-projects-add-prj-btn.hide,
+.aside-projects-create.hide {
+  display: none;
+}
+
+.aside-projects-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.4rem;
+  outline: none;
+  font-size: 1.6rem;
+}
+
+.aside-projects-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.aside-projects-btn {
+  width: 10rem;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.aside-projects-cancel-btn {
+  background-color: var(--color-red-300);
+  border: 0.1rem solid var(--color-red-500);
+}
+
+.aside-projects-add-btn {
+  background-color: var(--color-green-300);
+  border: 0.1rem solid var(--color-green-500);
+}
+
+.aside-projects-cancel-btn:hover {
+  background-color: var(--color-red-500);
+  color: var(--color-neutral-900);
+}
+
+.aside-projects-add-btn:hover {
+  background-color: var(--color-green-500);
+  color: var(--color-neutral-900);
+}
+
+/* Main */
+
+.main {
+  grid-area: main;
+  background-color: var(--color-neutral-200);
+  overflow: auto;
+  padding: 2rem 3rem;
+}
+
+.main-todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-neutral-300);
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+}
+
+.main-todo.priority-low {
+  border-left: 0.6rem solid var(--color-green-500);
+}
+
+.main-todo.priority-medium {
+  border-left: 0.6rem solid var(--color-yellow-500);
+}
+
+.main-todo.priority-high {
+  border-left: 0.6rem solid var(--color-red-500);
+}
+
+.main-todo-title {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+#main-todo-checkbox {
+  appearance: none;
+  height: 2.2rem;
+  width: 2.2rem;
+  background-color: var(--color-neutral-50);
+  border: 0.2rem solid var(--color-emerald-500);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+#main-todo-checkbox:checked {
+  background-image: url(./check-bold.svg);
+  background-color: var(--color-emerald-500);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-origin: border-box;
+}
+
+#main-todo-checkbox:checked + label {
+  text-decoration: line-through;
+}
+
+.main-todo-details {
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: 0.2rem solid var(--color-emerald-500);
+  color: var(--color-emerald-500);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.main-todo-details:hover {
+  background-color: var(--color-emerald-500);
+  color: var(--color-neutral-50);
+}
+
+.main-todo-logo {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: currentColor;
+  cursor: pointer;
+}
+
+.main-todo-logo:hover {
+  fill: var(--color-neutral-900);
+}
+
+.main-todo-controls-container {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 7rem;
+  right: 5rem;
+  color: var(--color-neutral-50);
+  background-color: var(--color-neutral-400);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0.5rem 1rem 0 rgba(23, 23, 23, 0.2);
+  z-index: 5;
+}
+
+.add-btn:hover {
+  background-color: var(--color-neutral-600);
+  box-shadow: 0 1rem 1rem 0 rgba(23, 23, 23, 0.3);
+  cursor: pointer;
+}
+
+.add-logo {
+  width: 8rem;
+  height: 8rem;
+  fill: currentColor;
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 23, 23, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.modal-details,
+.modal-form-container {
+  width: 60rem;
+  height: 60rem;
+  background-color: var(--color-neutral-50);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.4rem;
+}
+
+.modal-details-text {
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+.modal-details.hide,
+.modal-form-container.hide {
+  display: none;
+}
+
+.modal-titlebar {
+  background-color: var(--color-neutral-600);
+  color: var(--color-neutral-50);
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-titlebar-logo {
+  width: 3.2rem;
+  height: 3.2rem;
+  fill: currentColor;
+  border-radius: 50%;
+}
+
+.modal-titlebar-logo:hover {
+  background-color: var(--color-emerald-400);
+}
+
+.modal-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+.modal-form-title {
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  background-color: transparent;
+  font-size: 2rem;
+  outline: none;
+}
+
+.modal-form-title::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.modal-form-textarea {
+  width: 100%;
+  height: 30rem;
+  resize: none;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  font-size: 2rem;
+}
+
+.modal-form-textarea::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.modal-form-date {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.modal-form-date > label {
+  font-size: 2rem;
+}
+
+#modal-form-date-calendar {
+  background-color: transparent;
+  color: var(--color-emerald-400);
+  border: 0.1rem solid var(--color-emerald-400);
+  border-radius: 0.4rem;
+  outline: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+#modal-form-date-calendar:hover {
+  background-color: var(--color-emerald-400);
+  color: var(--color-neutral-50);
+}
+
+.modal-group-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.modal-form-radio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-form-radio-title {
+  font-size: 2rem;
+}
+
+.modal-form-radio #low,
+.modal-form-radio #medium,
+.modal-form-radio #high {
+  display: none;
+}
+
+.modal-form-radio > label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+
+.modal-form-radio #low + label {
+  border: 0.1rem solid var(--color-green-500);
+  color: var(--color-green-500);
+}
+
+.modal-form-radio #medium + label {
+  border: 0.1rem solid var(--color-yellow-500);
+  color: var(--color-yellow-500);
+}
+
+.modal-form-radio #high + label {
+  border: 0.1rem solid var(--color-red-500);
+  color: var(--color-red-500);
+}
+
+.modal-form-radio #low + label:hover,
+.modal-form-radio #low:checked + label {
+  background-color: var(--color-green-500);
+  color: var(--color-neutral-50);
+}
+
+.modal-form-radio #medium + label:hover,
+.modal-form-radio #medium:checked + label {
+  background-color: var(--color-yellow-500);
+  color: var(--color-neutral-50);
+}
+
+.modal-form-radio #high + label:hover,
+.modal-form-radio #high:checked + label {
+  background-color: var(--color-red-500);
+  color: var(--color-neutral-50);
+}
+
+.modal-form-add-button {
+  background-color: var(--color-emerald-400);
+  color: var(--color-neutral-50);
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+.modal-form-add-button:hover {
+  background-color: var(--color-emerald-500);
+}
+
+/* Footer */
+
+.footer {
+  grid-area: footer;
+  background-color: var(--color-neutral-600);
+  color: var(--color-neutral-50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+}
+
+.footer .github-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentColor;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer .github-icon:hover,
+.footer .github-icon:active {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.selected {
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-900);
+}
