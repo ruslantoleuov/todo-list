@@ -228,7 +228,7 @@ document.addEventListener(
         <input class="main-todo-checkbox" type="checkbox" ${
           task.isDone ? "checked" : ""
         } />
-        <span>${task.title}</span>
+        <span class="main-todo-title-text">${task.title}</span>
       </div>
       <div class="main-todo-controls-container">
         <span class="main-todo-details">details</span>
@@ -349,7 +349,8 @@ document.addEventListener(
           'input[name="form-radio"]:checked'
         ).value;
 
-        choosedTaskEl.querySelector("label").textContent = task.title;
+        choosedTaskEl.querySelector(".main-todo-title-text").textContent =
+          task.title;
 
         if (choosedTaskEl.classList.contains("priority-low")) {
           choosedTaskEl.classList.remove("priority-low");
