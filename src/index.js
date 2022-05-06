@@ -225,10 +225,10 @@ document.addEventListener(
       divEl.classList.add(`priority-${task.priority}`);
       divEl.innerHTML = `
       <div class="main-todo-title">
-        <input id="main-todo-checkbox" type="checkbox" ${
+        <input class="main-todo-checkbox" type="checkbox" ${
           task.isDone ? "checked" : ""
         } />
-        <label for="main-todo-checkbox">${task.title}</label>
+        <span>${task.title}</span>
       </div>
       <div class="main-todo-controls-container">
         <span class="main-todo-details">details</span>
@@ -626,7 +626,7 @@ document.addEventListener(
         showModal(modalDetailsEl);
       }
 
-      if (e.target.id === "main-todo-checkbox") {
+      if (e.target.classList.contains("main-todo-checkbox")) {
         if (
           choosedAsideEl.classList.contains("aside-due-dates-inbox") ||
           choosedAsideEl.classList.contains("aside-due-dates-today") ||

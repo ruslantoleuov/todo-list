@@ -263,7 +263,7 @@ body {
   gap: 2.5rem;
 }
 
-#main-todo-checkbox {
+.main-todo-checkbox {
   appearance: none;
   height: 2.2rem;
   width: 2.2rem;
@@ -273,7 +273,7 @@ body {
   cursor: pointer;
 }
 
-#main-todo-checkbox:checked {
+.main-todo-checkbox:checked {
   background-image: url(./check-bold.svg);
   background-color: var(--color-emerald-500);
   background-size: cover;
@@ -283,7 +283,7 @@ body {
   background-origin: border-box;
 }
 
-#main-todo-checkbox:checked + label {
+.main-todo-checkbox:checked + span {
   text-decoration: line-through;
 }
 
